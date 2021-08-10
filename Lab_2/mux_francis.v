@@ -6,4 +6,4 @@ module mux_francis(
     input wire sel,
     output wire z);
     assign z = sel ? b : a;
-endmodule
+endmodule // mux_francis
