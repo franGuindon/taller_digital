@@ -37,6 +37,6 @@ module testbench_francis_2;
      begin
 	$dumpvars;
 	$display ("in0 | in1 | in2 | in3 | sel | out |");
-	$monitor (" %h |  %h |  %h |  %h | %b  | %h  |", in0, in1, in2, in3, sel, out);
+	$monitor ("  %h |   %h |   %h |   %h | %b  |  %h  |", in0, in1, in2, in3, sel, out);
      end
 endmodule
