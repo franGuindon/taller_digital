@@ -22,7 +22,7 @@ module testbench_francis_2;
 	 in3 = $random;
 
 	 for (i = 1; i < 4; i=i+1) begin
-	    #5 sel = i;
+	    #10 sel = i;
 	 end
       end
    endtask // test1
