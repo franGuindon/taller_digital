@@ -1,0 +1,4 @@
+Running: xsim.dir/cod_to_dec_behav/xsimk.exe -simmode gui -wdb cod_to_dec_behav.wdb -simrunnum 0 -socket 61174
+Design successfully loaded
+Design Loading Memory Usage: 6292 KB (Peak: 6292 KB)
+Design Loading CPU Usage: 31 ms
