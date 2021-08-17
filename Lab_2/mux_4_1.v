@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module mux_francis_2
+module mux_4_1
   #(DATA_WIDTH=4)(input [DATA_WIDTH-1:0]  in0, in1, in2, in3,
 		  input [1:0] 		      sel,
 		  output reg [DATA_WIDTH-1:0] out);
@@ -12,4 +12,5 @@ module mux_francis_2
        2'b10: out = in2;
        2'b11: out = in3;
      endcase // case (sel)
-endmodule // mux_francis_2
+endmodule // mux_4_1
+

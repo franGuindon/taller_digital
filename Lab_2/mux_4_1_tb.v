@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module testbench_francis_2;
+module mux_4_1_tb;
 
    parameter DATA_WIDTH=4;
    
@@ -11,7 +11,9 @@ module testbench_francis_2;
    integer 		 i;
    
 
-   mux_francis_2 #(.DATA_WIDTH(DATA_WIDTH)) uut (.in0(in0), .in1(in1), .in2(in2), .in3(in3), .sel(sel), .out(out));
+   mux_4_1 #(.DATA_WIDTH(DATA_WIDTH)) uut (.in0(in0), .in1(in1), .in2(in2), .in3(in3),
+					   .sel(sel),
+					   .out(out));
 
    task test1();
       begin
@@ -39,4 +41,4 @@ module testbench_francis_2;
 	$display ("in0 | in1 | in2 | in3 | sel | out |");
 	$monitor ("  %h |   %h |   %h |   %h | %b  |  %h  |", in0, in1, in2, in3, sel, out);
      end
-endmodule
+endmodule // mux_4_1_tb
