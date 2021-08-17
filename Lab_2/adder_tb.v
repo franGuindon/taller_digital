@@ -14,29 +14,34 @@ module adder_tb;
 					 .sum(sum),
 					 .cout(cout));
 
-   reg [DATA_WIDTH*2:0]  i;
+   reg [DATA_WIDTH-1:0]  i, j;
    
    task test1();
       begin
-	 for (i = 0; i < 131072; i=i+1) begin
-	    cin = i[0];
-	    in0 = i[8:1];
-	    in1 = i[16:9];
-	    #10;
+	 for (i = 0; i < 256; i=i+1) begin
+	    for (j = 0; j < 256; j=j+1) begin
+	       in0 = j;
+	       in1 = i;
+	       #10;
+	    end
 	 end
       end
    endtask // test1
 
    initial
      begin
+	cin = 0;
+	test1();
+	cin = 1;
 	test1();
 	$finish;
      end
 
    initial
      begin
-	$dumpvars;
-	$display ("| cin | in0 | in1 || cout | sum | notes");
-	$monitor ("|   %b | %d | %d ||    %b | %d | %s", cin, in0, in1, cout, sum, cout == 1 ? "overflow" : "");
+	$display ("| cin | in0 | in1 || cout | sum | checksum | notes");
+	$monitor ("|   %b | %d | %d ||    %b | %d | %d | %s%s",
+		  cin, in0, in1, cout, sum, in0 + in1,
+		  sum != in0 + in1 ? "Error" : "", cout == 1 ? "overflow" : "");
      end
 endmodule // adder_tb
