@@ -28,20 +28,18 @@ module adder_tb;
       end
    endtask // test1
 
-   initial
-     begin
-	cin = 0;
-	test1();
-	cin = 1;
-	test1();
-	$finish;
-     end
+   initial begin
+      cin = 0;
+      test1();
+      cin = 1;
+      test1();
+      $finish;
+   end
 
-   initial
-     begin
-	$display ("| cin | in0 | in1 || cout | sum | checksum | notes");
-	$monitor ("|   %b | %d | %d ||    %b | %d | %d | %s%s",
-		  cin, in0, in1, cout, sum, in0 + in1,
-		  sum != in0 + in1 ? "Error" : "", cout == 1 ? "overflow" : "");
-     end
+   initial begin
+      $display ("| cin | in0 | in1 || cout | sum | checksum | notes");
+      $monitor ("|   %b | %d | %d ||    %b | %d | %d | %s%s",
+		cin, in0, in1, cout, sum, in0 + in1,
+		sum != in0 + in1 ? "Error" : "", cout == 1 ? "overflow" : "");
+   end
 endmodule // adder_tb
