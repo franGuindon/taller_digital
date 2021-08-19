@@ -44,6 +44,11 @@ module alu_tb;
 	 FlagIn = 1;
 	 Control = 4'h8;
 	 #10;
+	 A = 4'b0110; // respuesta debería ser 1011
+	 B = 4'b0011;
+	 FlagIn = 1;
+	 Control = 4'h8;
+	 #10;
 	 A = 4'b0110; // respuesta debería ser 0001 y C=1
 	 B = 4'b0010;
 	 FlagIn = 0;
@@ -56,6 +61,11 @@ module alu_tb;
 	 #10;
 	 A = 4'b0110;
 	 B = 4'b0001;
+	 FlagIn = 1;
+	 Control = 4'h9;
+	 #10;
+	 A = 4'b0110;
+	 B = 4'b0011;
 	 FlagIn = 1;
 	 Control = 4'h9;
 	 #10;
