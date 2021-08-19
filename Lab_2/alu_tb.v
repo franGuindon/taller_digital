@@ -54,6 +54,11 @@ module alu_tb;
 	 FlagIn = 1;
 	 Control = 4'h9;
 	 #10;
+	 A = 4'b0110;
+	 B = 4'b0001;
+	 Flag = 1;
+	 Control = 4'h9;
+	 #10;
       end
    endtask // test1
    
