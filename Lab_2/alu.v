@@ -16,7 +16,7 @@ module ALU
    assign B = ALUControl == 4'h2 ? ALUB :
 	      ALUControl == 4'h6 ? ~ALUB + 1 : 0;
    assign temp = ALUControl == 4'h8 ? (ALUFlagIn == 0 ? ALUA << ALUB : ~((~ALUA) << ALUB)) :
-		 ALUControl == 4'h9 ? (ALUFlagIn == 0 ? {1'b0,ALUA} >> (ALUB-1) : ~((~{1'b1,ALUA}) >> (ALUB-1))) :
+		 ALUControl == 4'h9 ? (ALUFlagIn == 0 ? ALUA >> (ALUB-1) : ~{~ALUA >> (ALUB-1)}):
 		 0 ;
    assign C = ALUControl == 4'h8 ? temp[n] :
 	      ALUControl == 4'h9 ? temp[0] :
