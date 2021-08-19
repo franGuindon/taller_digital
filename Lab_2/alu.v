@@ -58,7 +58,7 @@ module ALU
 	  end
 	4'h9:
 	  begin
-	     assign temp = (ALUFlagIn == 0 ? ALUA >> ALUB : ~((~ALUA) >> ALUB)); //
+	     assign temp = (ALUFlagIn == 0 ? ALUA >> ALUB : ~((~ALUA) >> ALUB)); // 0110, 00110, 11001
 	     assign ALUResult = temp[n:1];
 	     assign C = ALUB > n ? ALUFlagIn : ALUA[ALUB-1];
 	  end
