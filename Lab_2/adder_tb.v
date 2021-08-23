@@ -14,32 +14,32 @@ module adder_tb;
 					 .sum(sum),
 					 .cout(cout));
 
-   reg [DATA_WIDTH-1:0]  i, j;
+   reg [DATA_WIDTH*2:0]  i;
    
    task test1();
-      begin
-	 for (i = 0; i < 256; i=i+1) begin
-	    for (j = 0; j < 256; j=j+1) begin
-	       in0 = j;
-	       in1 = i;
-	       #10;
-	    end
-	 end
-      end
+
+	 for (i = 0; i < 131072; i=i+1)
+	   begin
+	      in0 = i [DATA_WIDTH-1:0];
+	      in1 = i [DATA_WIDTH*2-1:DATA_WIDTH];
+	      cin= i[DATA_WIDTH*2];
+	      #10; 
+	   end
+
    endtask // test1
 
-   initial begin
-      cin = 0;
-      test1();
-      cin = 1;
-      test1();
-      $finish;
-   end
+   initial
+     begin
+	test1();
+	$finish;
+     end
 
-   initial begin
-      $display ("| cin | in0 | in1 || cout | sum | checksum | notes");
-      $monitor ("|   %b | %d | %d ||    %b | %d | %d | %s%s",
-		cin, in0, in1, cout, sum, in0 + in1,
-		sum != in0 + in1 ? "Error" : "", cout == 1 ? "overflow" : "");
-   end
+   initial
+     begin
+	$display ("| cin | in0 | in1 || cout | sum | checksum | notes");
+	$monitor ("|   %b | %d | %d ||    %b | %d | %d | %s %s",
+		  cin, in0, in1, cout, sum, in0 + in1 + cin,
+		  sum != in0 + in1 + cin ? "Error" : "", cout == 1 ? "overflow" : "");	
+     end
 endmodule // adder_tb
+
