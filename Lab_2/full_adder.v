@@ -1,18 +1,15 @@
 module Fulladder(input 	    BitA,
-		 input 	    BitB,
-		 input 	    Cin,
-		 output reg Res,
-		 output reg Carry);
+		 input 	BitB,
+		 input 	Cin,
+		 output Res,
+   		 output Carry);
 
-   reg 			    Rx, Ad, AB;
-
-   always@(*)
-     begin
-	Rx = BitA ^ BitB;
-	Res = Rx ^ Cin;
-	Ad = Rx & Cin;
-	AB = BitA & BitB;
-	Carry = Ad | AB;
-     end
+   wire 		Rx, Ad, AB;
+      
+   assign	Rx = BitA ^ BitB;
+   assign	Res = Rx ^ Cin;
+   assign	Ad = Rx & Cin;
+   assign	AB = BitA & BitB;
+   assign	Carry = Ad | AB;
    
 endmodule
